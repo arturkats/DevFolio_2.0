@@ -9,10 +9,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
+/* Base */
 body {
   background: #fff;
   color: #000;
   font-family: Arial, sans-serif;
+  transition: all 0.25s ease;
 }
 
 .container {
@@ -23,34 +26,81 @@ h1, h2 {
   font-weight: 700;
 }
 
+/* Sections */
 .section {
   padding: 60px 0;
   border-bottom: 1px solid #000;
+  transition: all 0.25s ease;
 }
 
 .hero {
   padding: 100px 0;
 }
 
+/* Tags */
 .tag {
   display: inline-block;
   border: 1px solid #000;
   padding: 4px 8px;
   margin: 4px;
   font-size: 14px;
+  transition: all 0.25s ease;
 }
 
+/* Highlight */
 .highlight {
   font-weight: bold;
 }
 
+/* Links */
 a {
   color: black;
   text-decoration: underline;
 }
-</style>
 
+/* Toggle Button */
+.toggle-btn {
+  margin-top: 20px;
+  padding: 6px 12px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* DARK MODE */
+.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+.dark-mode a {
+  color: #fff;
+}
+
+.dark-mode .section {
+  border-bottom: 1px solid #fff;
+}
+
+.dark-mode .tag {
+  border: 1px solid #fff;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3 {
+  color: #fff;
+}
+
+.dark-mode .toggle-btn {
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="container">
@@ -75,9 +125,13 @@ a {
     0414 391 616 |
     <a href="https://www.linkedin.com/in/artur-kats" target="_blank">LinkedIn</a>
   </p>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()">
+    Toggle Dark Mode
+  </button>
 </section>
 
-<!-- VALUE PROP -->
+<!-- VALUE -->
 <section class="section">
   <h2>Value Proposition</h2>
 
@@ -89,8 +143,7 @@ a {
 
   <p>
     Experienced across <strong>ISO 27001, NIST CSF, ISM, Essential Eight, and SOC 2</strong>,
-    with a proven ability to support <strong>risk assessments, compliance programs,
-    and incident response planning</strong>.
+    supporting <strong>risk assessments, compliance programs, and incident response planning</strong>.
   </p>
 </section>
 
@@ -101,8 +154,8 @@ a {
   <ul>
     <li>Reduced legal risk exposure by <strong>30%</strong> (Allens)</li>
     <li>Assessed <strong>2,000+ documents</strong> for compliance & privilege</li>
-    <li>Built incident response solution reducing coordination time by <strong>66%</strong></li>
-    <li>Led award-winning cybersecurity architecture project (VoidHarbor)</li>
+    <li>Built incident response reducing coordination time by <strong>66%</strong></li>
+    <li>Led award-winning cybersecurity architecture project</li>
     <li>Delivered vulnerability assessments aligned to ISO 27001 & NIST</li>
   </ul>
 </section>
@@ -158,16 +211,15 @@ a {
 
   <p>
     Designed a complete security architecture for a breached enterprise,
-    including network segmentation, hardening, and incident response strategy.
+    including segmentation, hardening, and incident response strategy.
   </p>
 
   <p>
-    Selected as <strong>best solution across entire cohort</strong>
-    and awarded simulated industry tender.
+    Selected as <strong>best solution across entire cohort</strong> and awarded simulated tender.
   </p>
 </section>
 
-<!-- CERTS -->
+<!-- CERTIFICATIONS -->
 <section class="section">
   <h2>Certifications</h2>
 
@@ -180,7 +232,7 @@ a {
   </ul>
 </section>
 
-<!-- FINAL CTA -->
+<!-- CTA -->
 <section class="section text-center">
   <h2>Let's Work Together</h2>
 
@@ -195,6 +247,24 @@ a {
 </section>
 
 </div>
+
+<!-- SCRIPT (correct placement) -->
+<script>
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+}
+</script>
 
 </body>
 </html>
